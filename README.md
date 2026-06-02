@@ -1,1 +1,1 @@
-# camp-half-bood
+# camp-half-blood
