@@ -4,27 +4,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camp Half-Blood Manual</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Caesar+Dressing&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Estilos Gerais */
+        body {
+            background-color: rgb(255, 251, 245);
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: rgb(20, 2, 2);
+        }
+        .titulos-tematicos {
+            font-family: 'Caesar Dressing', cursive;
+        }
+
+        /* Grade de Botões dos Chalés */
+        .grid-chales {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .botao-chale {
+            background-color: rgb(246, 120, 10);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .botao-chale:hover {
+            background-color: rgb(200, 90, 5);
+            transform: translateY(-3px);
+        }
+
+        /* Estilo da Janela Modal (Pop-up) */
+        .modal {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-conteudo {
+            background-color: rgb(255, 251, 245);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            animation: entrarModal 0.3s ease-out;
+        }
+        @keyframes entrarModal {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .fechar-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #555;
+        }
+    </style>
 </head>
-<body style="background-color: rgb(255, 251, 245); font-family: sans-serif; margin: 0; padding: 0;">
+<body>
+
     <header style="background-color: rgb(246, 120, 10);">
-        <div style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKNTz3B0c7GB8YJz4K7IaIqk8W7ZOFbadIjiwXy7-fvw&s=10'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center;">
-            <h1 style="font-family: 'Caesar Dressing', cursive; font-size: 3rem; color: rgb(16, 7, 1); margin: 0; background-color: rgba(255, 255, 255, 0.6); display: inline-block; padding: 10px 20px; border-radius: 5px;">
+        <div style="background-image: url('https://gstatic.com'); background-size: cover; background-position: center; padding: 60px 20px; text-align: center;">
+            <h1 class="titulos-tematicos" style="font-size: 3rem; color: rgb(16, 7, 1); margin: 0; background-color: rgba(255, 255, 255, 0.6); display: inline-block; padding: 10px 20px; border-radius: 5px;">
                 Camp Half-Blood Manual
             </h1>
         </div>
         <p style="color: rgb(20, 9, 2); text-align: center; font-weight: bold; padding: 10px;">Para você, pequeno semideus que acabou de chegar de paraquedas e quer entender melhor o que é o Acampamento Meio-Sangue, esse manual foi criado exatamente para você.</p>
     </header>
-    <main style="max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: rgb(20, 2, 2);">
-        <h2 style="font-family: 'Caesar Dressing', cursive; font-size: 2rem;">Seja muito bem-vindo, pequeno semideus.</h2>
-        <p>Sei que deve estar completamente perdido. Suponho que nem acredite nos deuses gregos — a maioria de nós não acreditava também. Claro, é uma maluquice mesmo! Ninguém quer aceitar que são semideuses no começo. Porém, costumam aceitar depois de um tempo, ou só fogem do acampamento.</p>
-        <p>Fugir é um perigo enorme, já que os monstros sentem o cheiro dos semideuses. E pode ter certeza: os monstros querem te matar. Seja por eles mesmos, ou pelos próprios deuses tentando te eliminar — e sim, isso pode acontecer se você irritar um deles. Por isso, recomendo ficar aqui para receber o treinamento devido.</p>
-        <p>O acampamento é um lugar acolhedor, eu te prometo. Afinal, todos somos semideuses iguais. Só cuidado com os filhos de Ares; não queremos problemas com ninguém do chalé 5.</p>
-        <h3 style="font-family: 'Caesar Dressing', cursive; font-size: 1.5rem;">Os Chalés do Acampamento</h3>
-        <p>Os chalés são as construções do acampamento onde os semideuses são abrigados. São 20 chalés já construídos e estamos na produção de mais alguns. Cada chalé é representado por um dos deuses.</p>
-        <p>Alguns são apenas construções honorárias, como o de Hera (a deusa do casamento). Como ela é casada e fiel a Zeus (mesmo não podendo dizer o mesmo dele), Hera não tem filhos com mortais. Então, seu chalé foi criado apenas para homenagear a rainha dos deuses, sem abrigar nenhum campista.</p>
+
+    <main>
+        <h2 class="titulos-tematicos" style="font-size: 2rem;">Seja muito bem-vindo, pequeno semideus.</h2>
+        <p>Sei que deve estar completamente perdido. Suponho que nem acredite nos deuses gregos — a maioria de nós não acreditava também. Por isso, recomendo ficar aqui para receber o treinamento devido.</p>
+        
+        <h3 class="titulos-tematicos" style="font-size: 1.5rem;">Explore os Chalés</h3>
+        <p>Clique em um dos chalés abaixo para conhecer a sua descrição e qual deus ele representa:</p>
+
+        <!-- Grid de Botões Interativos -->
+        <div class="grid-chales">
+            <!-- O atributo data-chale faz a ponte com o texto que vai aparecer -->
+            <button class="botao-chale titulos-tematicos" data-chale="zeus">Chalé 1<br>Zeus</button>
+            <button class="botao-chale titulos-tematicos" data-chale="hera">Chalé 2<br>Hera</button>
+            <button class="botao-chale titulos-tematicos" data-chale="poseidon">Chalé 3<br>Poseidon</button>
+            <button class="botao-chale titulos-tematicos" data-chale="ares">Chalé 5<br>Ares</button>
+        </div>
     </main>
+
+    <!-- Estrutura do Pop-up (Modal) -->
+    <div id="janelaModal" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar-modal" onclick="fechar()">&times;</span>
+            <h2 id="modalTitulo" class="titulos-tematicos" style="color: rgb(246, 120, 10); margin-top: 0;"></h2>
+            <p id="modalTexto"></p>
+        </div>
+    </div>
+
+    <!-- Lógica de Interação (JavaScript) -->
+    <script>
+        // Banco de dados com as descrições de cada chalé
+        const infoChales = {
+            zeus: {
+                titulo: "Chalé 1 - Zeus",
+                texto: "O chalé do Rei dos Deuses. É uma construção imensa, feita de mármore branco com grandes colunas. É cercado por estátuas de águias e costuma ser frio e silencioso, já que raramente tem moradores."
+            },
+            hera: {
+                titulo: "Chalé 2 - Hera",
+                texto: "Um chalé honorário dedicado à Rainha dos Deuses. Como Hera é a deusa do casamento e estritamente fiel, ela não possui filhos mortais. O chalé serve apenas como homenagem e não abriga campistas."
+            },
+            poseidon: {
+                titulo: "Chalé 3 - Poseidon",
+                texto: "Construído com rochas marinhas e conchas vindas do fundo do oceano. O ar dentro dele sempre cheira a maresia e possui uma fonte de água salgada interna. Seus moradores têm forte ligação com o mar."
+            },
+            ares: {
+                titulo: "Chalé 5 - Ares",
+                texto: "Pintado de um vermelho vivo e agressivo, decorado com cabeças de javali. É um lugar barulhento, cheio de armas e equipamentos de combate. Cuidado ao passar por perto, os filhos do deus da guerra adoram uma briga!"
+            }
+        };
+
+        const modal = document.getElementById("janelaModal");
+        const titulo = document.getElementById("modalTitulo");
+        const texto = document.getElementById("modalTexto");
+
+        // Adiciona o evento de clique em todos os botões de chalé
+        document.querySelectorAll(".botao-chale").forEach(botao => {
+            botao.addEventListener("click", () => {
+                const chaveChale = botao.getAttribute("data-chale");
+                const dados = infoChales[chaveChale];
+
+                if (dados) {
+                    titulo.innerText = dados.titulo;
+                    texto.innerText = dados.texto;
+                    modal.style.display = "flex"; // Abre o pop-up
+                }
+            });
+        });
+
+        // Função para fechar o pop-up
+        function fechar() {
+            modal.style.display = "none";
+        }
+
+        // Fecha o pop-up se o usuário clicar fora da caixinha branca
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                fechar();
+            }
+        }
+    </script>
 </body>
 </html>
