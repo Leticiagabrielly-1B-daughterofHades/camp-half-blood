@@ -93,11 +93,14 @@
             <button onclick="abrirChale(19)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 19: Ticê</button>
             <button onclick="abrirChale(20)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 20: Hécate</button>
         </div>
-        <div id="painel-chale" style="display: none; margin-top: 30px; padding: 20px; background-color: rgb(255, 235, 205); border: 2px solid rgb(246, 120, 10); border-radius: 8px;">
-            <h3 id="titulo-chale" style="font-family: 'Caesar Dressing', cursive; font-size: 1.8rem; margin-top: 0; color: rgb(246, 120, 10);"></h3>
-            <p id="descricao-chale" style="font-size: 1.1rem; color: rgb(20, 2, 2);"></p>
-        </div>
     </main>
+    <div id="modal-chale" class="modal-fundo" onclick="fecharFora(event)">
+        <div class="modal-conteudo">
+            <button class="botao-fechar" onclick="fecharChale()">✕</button>
+            <h3 id="titulo-chale" style="font-family: 'Caesar Dressing', cursive; font-size: 1.8rem; margin-top: 0; color: rgb(246, 120, 10);"></h3>
+            <p id="descricao-chale" style="font-size: 1.1rem; color: rgb(20, 2, 2); margin-bottom: 0;"></p>
+        </div>
+    </div>
     <script>
     const informacoesChales = {
         1: { nome: "Chalé 1: Zeus", desc: "O chalé do rei dos deuses. Construído em mármore pesado com grandes colunas, teto alto e uma estátua gigantesca de Zeus no centro." },
@@ -122,19 +125,23 @@
         20: { nome: "Chalé 20: Hécate", desc: "Feito de pedras mágicas e símbolos místicos da deusa da magia e das encruzilhadas." }
     };
     function abrirChale(numero) {
-        const painel = document.getElementById('painel-chale');
+        const modal = document.getElementById('modal-chale');
         const titulo = document.getElementById('titulo-chale');
         const descricao = document.getElementById('descricao-chale');
         if (informacoesChales[numero]) {
             titulo.innerText = informacoesChales[numero].nome;
             descricao.innerText = informacoesChales[numero].desc;
-            painel.style.display = 'block';
-            painel.scrollIntoView({ behavior: 'smooth' });
+            modal.style.display = 'flex'; // Abre a janelinha
         }
     }
     function fecharChale() {
-    document.getElementById('painel-chale').style.display = 'none';
-}
+        document.getElementById('modal-chale').style.display = 'none';
+    }
+    function fecharFora(event) {
+        if (event.target.id === 'modal-chale') {
+            fecharChale();
+        }
+    }
     </script>
 </body>
 </html>
