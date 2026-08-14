@@ -7,21 +7,48 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap" rel="stylesheet">
-    <style>
-        /* Estilos da Janelinha (Modal) */
+   <style>
+        .btn-chale {
+            width: 100%;
+            height: 120px;
+            font-size: 1.1rem;
+            font-family: 'Caesar Dressing', cursive;
+            color: white;
+            border: 2px solid rgb(246, 120, 10);
+            border-radius: 8px;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0;
+        }
+        .btn-chale:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+        .btn-chale span {
+            background: rgba(0, 0, 0, 0.65);
+            width: 100%;
+            padding: 8px 5px;
+            text-shadow: 1px 1px 3px #000;
+        }
         .modal-fundo {
-            display: none; /* Escondido por padrão */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro transparente */
+            background-color: rgba(0, 0, 0, 0.6);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
-
         .modal-conteudo {
             background-color: rgb(255, 235, 205);
             border: 3px solid rgb(246, 120, 10);
@@ -48,9 +75,6 @@
             color: rgb(246, 120, 10);
             cursor: pointer;
         }
-        .botao-fechar:hover {
-            color: rgb(180, 80, 0);
-        }
     </style>
 </head>
 <body style="background-color: rgb(255, 251, 245); font-family: sans-serif; margin: 0; padding: 0;">
@@ -71,27 +95,29 @@
         <p>Os chalés são as construções do acampamento onde os semideuses são abrigados. São 20 chalés já construídos e estamos na produção de mais alguns. Cada chalé é representado por um dos deuses.</p>
         <p>Alguns são apenas construções honorárias, como o de Hera (a deusa do casamento). Como ela é casada e fiel a Zeus (mesmo não podendo dizer o mesmo dele), Hera não tem filhos com mortais. Então, seu chalé foi criado apenas para homenagear a rainha dos deuses, sem abrigar nenhum campista.</p>
         <h4 style="font-family: 'Caesar Dressing', cursive; font-size: 1.3rem; margin-top: 30px;">Explore os 20 Chalés Oficiais:</h4>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-top: 15px;">
-            <button onclick="abrirChale(1)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 1: Zeus</button>
-            <button onclick="abrirChale(2)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 2: Hera</button>
-            <button onclick="abrirChale(3)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 3: Poseidon</button>
-            <button onclick="abrirChale(4)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 4: Deméter</button>
-            <button onclick="abrirChale(5)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 5: Ares</button>
-            <button onclick="abrirChale(6)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 6: Atena</button>
-            <button onclick="abrirChale(7)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 7: Apolo</button>
-            <button onclick="abrirChale(8)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 8: Ártemis</button>
-            <button onclick="abrirChale(9)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 9: Hefesto</button>
-            <button onclick="abrirChale(10)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 10: Afrodite</button>
-            <button onclick="abrirChale(11)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 11: Hermes</button>
-            <button onclick="abrirChale(12)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 12: Dionísio</button>
-            <button onclick="abrirChale(13)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 13: Hades</button>
-            <button onclick="abrirChale(14)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 14: Íris</button>
-            <button onclick="abrirChale(15)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 15: Hipnos</button>
-            <button onclick="abrirChale(16)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 16: Némesis</button>
-            <button onclick="abrirChale(17)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 17: Nike</button>
-            <button onclick="abrirChale(18)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 18: Hebe</button>
-            <button onclick="abrirChale(19)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 19: Ticê</button>
-            <button onclick="abrirChale(20)" style="background-color: rgb(246, 120, 10); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 5px; cursor: pointer;">Chalé 20: Hécate</button>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-top: 15px;">
+            <button class="btn-chale" onclick="abrirChale(1)" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQaA13aQTZBsc5Y1mrY6zLPXCqUKnYXTk7Nz6HkAKzKw&s=10');">
+                <span>Chalé 1: Zeus</span>
+            </button>
+            <button class="btn-chale" onclick="abrirChale(2)" style="background-color: rgb(246, 120, 10);"><span>Chalé 2: Hera</span></button>
+            <button class="btn-chale" onclick="abrirChale(3)" style="background-color: rgb(246, 120, 10);"><span>Chalé 3: Poseidon</span></button>
+            <button class="btn-chale" onclick="abrirChale(4)" style="background-color: rgb(246, 120, 10);"><span>Chalé 4: Deméter</span></button>
+            <button class="btn-chale" onclick="abrirChale(5)" style="background-color: rgb(246, 120, 10);"><span>Chalé 5: Ares</span></button>
+            <button class="btn-chale" onclick="abrirChale(6)" style="background-color: rgb(246, 120, 10);"><span>Chalé 6: Atena</span></button>
+            <button class="btn-chale" onclick="abrirChale(7)" style="background-color: rgb(246, 120, 10);"><span>Chalé 7: Apolo</span></button>
+            <button class="btn-chale" onclick="abrirChale(8)" style="background-color: rgb(246, 120, 10);"><span>Chalé 8: Ártemis</span></button>
+            <button class="btn-chale" onclick="abrirChale(9)" style="background-color: rgb(246, 120, 10);"><span>Chalé 9: Hefesto</span></button>
+            <button class="btn-chale" onclick="abrirChale(10)" style="background-color: rgb(246, 120, 10);"><span>Chalé 10: Afrodite</span></button>
+            <button class="btn-chale" onclick="abrirChale(11)" style="background-color: rgb(246, 120, 10);"><span>Chalé 11: Hermes</span></button>
+            <button class="btn-chale" onclick="abrirChale(12)" style="background-color: rgb(246, 120, 10);"><span>Chalé 12: Dionísio</span></button>
+            <button class="btn-chale" onclick="abrirChale(13)" style="background-color: rgb(246, 120, 10);"><span>Chalé 13: Hades</span></button>
+            <button class="btn-chale" onclick="abrirChale(14)" style="background-color: rgb(246, 120, 10);"><span>Chalé 14: Íris</span></button>
+            <button class="btn-chale" onclick="abrirChale(15)" style="background-color: rgb(246, 120, 10);"><span>Chalé 15: Hipnos</span></button>
+            <button class="btn-chale" onclick="abrirChale(16)" style="background-color: rgb(246, 120, 10);"><span>Chalé 16: Némesis</span></button>
+            <button class="btn-chale" onclick="abrirChale(17)" style="background-color: rgb(246, 120, 10);"><span>Chalé 17: Nike</span></button>
+            <button class="btn-chale" onclick="abrirChale(18)" style="background-color: rgb(246, 120, 10);"><span>Chalé 18: Hebe</span></button>
+            <button class="btn-chale" onclick="abrirChale(19)" style="background-color: rgb(246, 120, 10);"><span>Chalé 19: Ticê</span></button>
+            <button class="btn-chale" onclick="abrirChale(20)" style="background-color: rgb(246, 120, 10);"><span>Chalé 20: Hécate</span></button>
         </div>
     </main>
     <div id="modal-chale" class="modal-fundo" onclick="fecharFora(event)">
@@ -108,7 +134,7 @@
         3: { nome: "Chalé 3: Poseidon", desc: "Feito de pedra marinha e conchas atadas. Cheira a maresia e abriga os filhos do Deus dos Mares." },
         4: { nome: "Chalé 4: Deméter", desc: "Decorado com plantas trepadeiras, flores silvestres e campos de trigo ao redor." },
         5: { nome: "Chalé 5: Ares", desc: "Pintado de vermelho vivo, cercado por arame farpado e com uma cabeça de javali empalhada na entrada." },
-        6: { nome: "Chalé 6: Atena", desc: "Um lugar organizado, repleto de estantes de livros, mesas de estratégia e bancadas de arquitetura." },
+        6: { nome: "Chalé 6: Atena", desc: "Um lugar organized, repleto de estantes de livros, mesas de estratégia e bancadas de arquitetura." },
         7: { nome: "Chalé 7: Apolo", desc: "Feito de ouro reluzente que reflete a luz do sol. Cheio de instrumentos musicais e equipamentos de medicina." },
         8: { nome: "Chalé 8: Ártemis", desc: "Usado apenas quando as Caçadoras de Ártemis visitam o acampamento. Prateado e decorado com temas de caça." },
         9: { nome: "Chalé 9: Hefesto", desc: "Parece uma oficina industrial de alta tecnologia, cheia de engrenagens, chaminés e ferramentas pesadas." },
@@ -131,7 +157,7 @@
         if (informacoesChales[numero]) {
             titulo.innerText = informacoesChales[numero].nome;
             descricao.innerText = informacoesChales[numero].desc;
-            modal.style.display = 'flex'; // Abre a janelinha
+            modal.style.display = 'flex';
         }
     }
     function fecharChale() {
